@@ -1,0 +1,1 @@
+# otus-qajs-test-pages
