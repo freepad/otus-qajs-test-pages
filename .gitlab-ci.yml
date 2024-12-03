@@ -27,4 +27,18 @@ test-api:
   script:
     - cp $ENV_FILE .env
     - npm test
+  artifacts:
+    when: always
+    paths:
+      - reports/allure-reports
 
+report:
+  dependencies:
+    - test-api
+  stage: report
+  image: registry.gitlab.com/freepad/qajs_2024_12/allure
+  script:
+    - allure generate reports/allure-results --clean --report-dir reports/allure-report
+  artifacts:
+    paths:
+      - reports/allure-report
