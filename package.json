@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node src/main.js",
-    "telegram": "npx tsx ./src/telegram.ts",
+    "telegram": "tsx ./src/telegram.ts",
     "lint:ci": "eslint .",
     "lint": "eslint . --fix",
     "type-check": "tsc --noEmit",

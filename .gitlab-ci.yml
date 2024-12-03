@@ -1,0 +1,18 @@
+stages:
+  - lint
+  - test
+
+code-style:
+  stage: lint
+  image: node:20.18.1
+  script:
+    - npm ci
+    - npm run lint:ci
+
+test-api:
+  stage: test
+  image: node:20.18.1
+  script:
+    - npm ci
+    - npm test
+
