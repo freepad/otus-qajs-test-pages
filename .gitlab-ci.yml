@@ -2,30 +2,29 @@ stages:
   - lint
   - test
 
-code-style:
-  stage: lint
-  image: node:20.18.1
+default:
+  image: node:22.11.0
+
+.node:
   cache:
     - key:
         files:
           - package-lock.json
       paths:
         - node_modules
-  script:
+  before_script:
     - npm ci
+
+code-style:
+  extends: .node
+  stage: lint
+  script:
     - npm run lint:ci
 
 test-api:
+  extends: .node
   stage: test
-  cache:
-    - key:
-        files:
-          - package-lock.json
-      paths:
-        - node_modules
-  image: node:20.18.1
   script:
-    - npm ci
     - cp $ENV_FILE .env
     - npm test
 
