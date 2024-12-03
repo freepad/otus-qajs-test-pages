@@ -1,6 +1,7 @@
 stages:
   - lint
   - test
+  - report
 
 default:
   image: node:22.11.0
